@@ -1,0 +1,68 @@
+<h1>Editing Staff</h1>
+
+<%= form_with(model: @staff ,url: staff_path, method: 'patch') do |form| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+        <% staff.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email, "登入信箱" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, "輸入密碼" %>
+    <%= form.text_field :password  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, "確認密碼" %>
+    <%= form.text_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_title, "職稱" %>
+    <%= form.text_field :job_title   %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department, "所屬部門" %>
+    <%= form.select :department, current_company.departments.all.map{ |c| [c.title, c.id] }  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :staff_no, "員工編號" %>
+    <%= form.text_field :staff_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name, "姓名" %>
+    <%= form.text_field :name %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :gender, "性別" %>
+    <%= form.select :gender , User.all_gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_at, "報到日期" %>
+    <%= form.date_field :start_at   %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @staff %> |
+<%= link_to 'Back', staffs_path %>
