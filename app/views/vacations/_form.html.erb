@@ -1,0 +1,37 @@
+<%= form_with(model: vacation) do |form| %>
+  <% if vacation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vacation.errors.count, "error") %> prohibited this vacation from being saved:</h2>
+
+      <ul>
+        <% vacation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vacation_type, "假別" %>
+    <%= form.select :vacation_type, Vacation.all_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vacation_date, "請假日" %>
+    <%= form.date_field :vacation_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approval %>
+    <%= form.text_field :approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, "備註" %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -18,5 +18,6 @@ module Flycat2
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << "82be-110-28-192-189.jp.ngrok.io"
   end
 end

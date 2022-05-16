@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_14_060657) do
+ActiveRecord::Schema.define(version: 2022_05_16_025858) do
 
   create_table "bulletins", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -66,7 +66,19 @@ ActiveRecord::Schema.define(version: 2022_05_14_060657) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vacations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "vacation_type"
+    t.string "approval", default: "f"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "vacation_date"
+    t.index ["user_id"], name: "index_vacations_on_user_id"
+  end
+
   add_foreign_key "bulletins", "companies"
   add_foreign_key "departments", "companies"
   add_foreign_key "users", "companies"
+  add_foreign_key "vacations", "users"
 end

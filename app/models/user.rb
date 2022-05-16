@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :company
   accepts_nested_attributes_for :company
+  has_many :vacations
 
 
   def self.all_gender

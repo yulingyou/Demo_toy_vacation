@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vacation type:</strong>
+  <%= @vacation.vacation_type %>
+</p>
+
+<p>
+  <strong>Approval:</strong>
+  <%= @vacation.approval %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @vacation.content %>
+</p>
+
+<%= link_to 'Edit', edit_vacation_path(@vacation) %> |
+<%= link_to 'Back', vacations_path %>
